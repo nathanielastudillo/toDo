@@ -4,7 +4,10 @@
         <h2 color='white'> Tasks </h2> <v-btn width='150' @click='addTask' color='green' dark> Add </v-btn>
     </div>
     <div id="toDoContent">
-        <div id='message' v-if='this.tasks.length < 1'>
+        <div id='messageCompleted' v-if='this.tasks.length < 1 && this.completed.length >= 1'>
+        <p v-if='this.tasks.length < 1'> Nothing to do yet! </p>
+        </div>
+        <div id='message' v-else-if='this.tasks.length < 1'>
         <p v-if='this.tasks.length < 1'> Nothing to do yet! </p>
         </div>
         <task transition="fade-transition" class='elevation-5' :id='task.id' :key='task.id' v-for='task in this.tasks'> </task>
@@ -79,6 +82,14 @@ export default {
     display: flex;
     width: 100%;
     height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+#messageCompleted {
+    display: flex;
+    width: 100%;
+    height: 50%;
     justify-content: center;
     align-items: center;
     color: white;
