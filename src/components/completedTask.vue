@@ -22,28 +22,19 @@ export default {
   props: ['id'],
   data() {
     return {
-      editMode: true,
+      editMode: false,
       task: {
           title: '',
           description: '',
           dueDate: '',
           completed: false,
           id: ''
-      },
-      test: '',
-      dueDateDialog: false
+      }
     }
   },
   methods: {
-      saveTask() {
-          this.editMode = false;
-          this.$store.commit('updateTask', this.task);
-      },
       deleteCompletedTask() {
           this.$store.commit('deleteCompletedTask', this.task);
-      },
-      completeTask() {
-          this.$store.commit('completeTask', this.task);
       }
   },
   computed: {
